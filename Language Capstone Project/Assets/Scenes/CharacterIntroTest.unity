@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camOffset: {x: 0, y: 3, z: -10}
-  amtOfPlayers: 7
+  amtOfPlayers: 10
   playerPrefab: {fileID: 1870209755922528, guid: 8a032bde850953342847c935093c97cf,
     type: 2}
   spawnPoint: {fileID: 1719285633}
@@ -717,7 +717,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10f402018474b1f4784c9e7db43ba708, type: 2}
   - {fileID: 11400000, guid: 261a5a8de94b85244839ad62594e1fdf, type: 2}
   textPanel: {fileID: 518060391}
-  spawnPointCamera: {x: 0, y: 5, z: -15}
+  spawnPointCamera: {x: 0, y: 5, z: -35}
 --- !u!4 &1177768529
 Transform:
   m_ObjectHideFlags: 0

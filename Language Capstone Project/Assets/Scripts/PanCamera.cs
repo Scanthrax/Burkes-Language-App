@@ -81,6 +81,7 @@ public class PanCamera : MonoBehaviour
 
         var midpoint = (players[0].transform.position.x + players[players.Length - 1].transform.position.x) / 2f;
         spawnPointCamera.x = midpoint;
+        spawnPointCamera.z = amtOfPlayers * -5f;
 
         cam.transform.position = spawnPointCamera;
     }
@@ -159,7 +160,17 @@ public class PanCamera : MonoBehaviour
         textPanel.SetActive(true);
         if (camTarget >= 0)
         {
-            text.text = "This contestant's name is " + players[camTarget].GetComponent<Character>().character.name;
+            var charTemp = players[camTarget].GetComponent<Character>().character;
+            string s1 = "This contestant's name is ";
+            string s2 = charTemp.name;
+            string s3 = ".  ";
+            string s4 = charTemp.isMale ? "His" : "Her";
+            string s5 = " country of origin is ";
+            string s6 = charTemp.nationality;
+            string s8 = "\n";
+            string s7 = string.Concat(new string[]{ s1,s2,s3,s8,s4,s5,s6,s3});
+
+            text.text = s7;
         }
         else
         {
