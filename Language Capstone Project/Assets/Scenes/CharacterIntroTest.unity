@@ -711,7 +711,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   duration: 0.5
-  nextState: 113
+  nextState: 32
   characters:
   - {fileID: 11400000, guid: c684de3175f2828428aa54ffbb019633, type: 2}
   - {fileID: 11400000, guid: 10f402018474b1f4784c9e7db43ba708, type: 2}
