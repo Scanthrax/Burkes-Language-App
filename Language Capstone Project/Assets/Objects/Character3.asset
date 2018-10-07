@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c447cd1f32f6c54f921b4a3a0f1df0d, type: 3}
   m_Name: Character3
   m_EditorClassIdentifier: 
-  name: Nikolai
-  nationality: Russia
+  name: Olga
+  nationality: Russian
+  isMale: 0

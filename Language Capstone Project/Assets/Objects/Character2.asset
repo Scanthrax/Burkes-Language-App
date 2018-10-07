@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Eduardo
   nationality: Mexican
+  isMale: 1
