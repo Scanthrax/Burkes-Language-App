@@ -15,7 +15,15 @@ public class Controller : MonoBehaviour {
     public Text[] text;
     int[] points = new int[4];
 
+    public bool wordRecognized = false;
+
     List<GameObject> actions = new List<GameObject>();
+
+
+    public float timer;
+    public Text timerText;
+    public Object menuScene;
+
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +59,7 @@ public class Controller : MonoBehaviour {
 
         }
 
-        
+        timer = 2f;
     }
 	
 	// Update is called once per frame
@@ -63,11 +71,12 @@ public class Controller : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || wordRecognized)
         {
             points[0] += 10;
             text[0].text = points[0].ToString();
             RandomPosition();
+            wordRecognized = false;
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -88,6 +97,14 @@ public class Controller : MonoBehaviour {
             RandomPosition();
         }
 
+
+        timer -= Time.deltaTime;
+        timerText.text = Mathf.RoundToInt(timer).ToString();
+        if(timer <= 0f)
+        {
+            EndGame();
+        }
+
     }
 
     void RandomPosition()
@@ -98,5 +115,12 @@ public class Controller : MonoBehaviour {
         float y = Random.Range(-screen.transform.localScale.z * 5f, screen.transform.localScale.z * 5f);
 
         actions[rand].transform.position = new Vector3(screen.transform.position.x + x, screen.transform.position.y + y, screen.transform.position.z - 0.01f);
+    }
+
+
+    void EndGame()
+    {
+        StaticVariables.minigame.Scores.Add(points[0]);
+        SceneManager.LoadScene(menuScene.name);
     }
 }

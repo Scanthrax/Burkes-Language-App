@@ -56,7 +56,7 @@ public struct Sentence
 
 public class SpeechController : MonoBehaviour {
 
-    public string[] keywords = new string[] { "he", "brushes", "his", "hair", "stop"};
+    public string[] keywords;
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
 
     public float speed = 1;
@@ -71,6 +71,7 @@ public class SpeechController : MonoBehaviour {
 
     public Sentence formingSentence;
 
+    public Controller cont;
     
 
     void Start ()
@@ -83,7 +84,7 @@ public class SpeechController : MonoBehaviour {
         }
 
 
-        formingSentence = new Sentence(amountOfWords);
+        formingSentence = new Sentence(1);
     }
 
 
@@ -117,5 +118,7 @@ public class SpeechController : MonoBehaviour {
         {
             wordPosition = 0;
         }
+
+        cont.wordRecognized = true;
     }
 }
