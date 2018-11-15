@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Welcome
-  - GameSelect
+  - Canvas
   layers:
   - Default
   - TransparentFX

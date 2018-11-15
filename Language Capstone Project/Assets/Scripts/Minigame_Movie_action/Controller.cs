@@ -15,7 +15,8 @@ public class Controller : MonoBehaviour {
     public Text[] text;
     int[] points = new int[4];
 
-    public bool wordRecognized = false;
+    public string wordRecognized;
+    public bool recognizedNewWord = false;
 
     List<GameObject> actions = new List<GameObject>();
 
@@ -24,6 +25,11 @@ public class Controller : MonoBehaviour {
     public Text timerText;
     public Object menuScene;
 
+
+    public ActionObject[] actionObjects;
+
+
+    public Dictionary<string, List<GameObject>> wordToObject = new Dictionary<string, List<GameObject>>();
 
 	// Use this for initialization
 	void Start () {
@@ -43,7 +49,7 @@ public class Controller : MonoBehaviour {
                 speed = 3f;
                 break;
             default:
-                speed = 0f;
+                speed = 1f;
                 break;
         }
 
@@ -52,14 +58,29 @@ public class Controller : MonoBehaviour {
             float x = Random.Range(-screen.transform.localScale.x * 5f, screen.transform.localScale.x * 5f);
             float y = Random.Range(-screen.transform.localScale.z * 5f, screen.transform.localScale.z * 5f);
 
-            var obj = Instantiate(action, new Vector3(screen.transform.position.x + x,screen.transform.position.y + y, screen.transform.position.z - 0.01f), Quaternion.identity);
-            var comp = obj.GetComponent<movement>();
-            actions.Add(obj);
-            comp.speed = speed;
+            var obj = Instantiate(action, new Vector3(screen.transform.position.x + x,screen.transform.position.y + y, screen.transform.position.z - 0.01f), Quaternion.identity).GetComponent<movement>();
+            actions.Add(obj.gameObject);
+            obj.speed = speed;
+            obj.actionObj = actionObjects[Random.Range(0, actionObjects.Length)];
+
+            var sentence = obj.actionObj.sentence;
+
+            if (!wordToObject.ContainsKey(sentence))
+            {
+                wordToObject.Add(sentence, new List<GameObject>());
+            }
+            wordToObject[sentence].Add(obj.gameObject);
 
         }
 
-        timer = 2f;
+        foreach (var item in wordToObject[actionObjects[0].sentence])
+        {
+            print(item.GetComponent<movement>().actionObj.name);
+        }
+
+        timer = 60f;
+
+
     }
 	
 	// Update is called once per frame
@@ -71,13 +92,22 @@ public class Controller : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) || wordRecognized)
+        if (recognizedNewWord)
         {
-            points[0] += 10;
-            text[0].text = points[0].ToString();
-            RandomPosition();
-            wordRecognized = false;
+            if (wordToObject.ContainsKey(wordRecognized))
+            {
+                points[0] += 10;
+                text[0].text = points[0].ToString();
+                RandomPosition(wordRecognized);
+            }
+            recognizedNewWord = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            RandomPosition(actionObjects[0].sentence);
+        }
+
         if (Input.GetKeyDown(KeyCode.X))
         {
             points[1] += 10;
@@ -115,6 +145,29 @@ public class Controller : MonoBehaviour {
         float y = Random.Range(-screen.transform.localScale.z * 5f, screen.transform.localScale.z * 5f);
 
         actions[rand].transform.position = new Vector3(screen.transform.position.x + x, screen.transform.position.y + y, screen.transform.position.z - 0.01f);
+    }
+
+    void RandomPosition(string key)
+    {
+        foreach (GameObject item in wordToObject[key].ToArray())
+        {
+            float x = Random.Range(-screen.transform.localScale.x * 5f, screen.transform.localScale.x * 5f);
+            float y = Random.Range(-screen.transform.localScale.z * 5f, screen.transform.localScale.z * 5f);
+
+            item.transform.position = new Vector3(screen.transform.position.x + x, screen.transform.position.y + y, screen.transform.position.z - 0.01f);
+
+            var temp = item.GetComponent<movement>().actionObj.sentence;
+
+
+            wordToObject[temp].Remove(item);
+
+            item.GetComponent<movement>().SetUp(actionObjects[Random.Range(0,actionObjects.Length)]);
+
+            temp = item.GetComponent<movement>().actionObj.sentence;
+
+            wordToObject[temp].Add(item);
+
+        }
     }
 
 

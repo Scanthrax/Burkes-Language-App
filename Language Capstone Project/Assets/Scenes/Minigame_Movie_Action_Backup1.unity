@@ -1225,7 +1225,7 @@ GameObject:
   - component: {fileID: 1962924469}
   m_Layer: 0
   m_Name: Controller
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1244,8 +1244,8 @@ MonoBehaviour:
   ground: {fileID: 735196574}
   screen: {fileID: 2134607615}
   action: {fileID: 1521244748692800, guid: 50a123af4119a2a42aa625a6ca48621c, type: 2}
-  numberOfActions: 5
-  difficulty: 2
+  numberOfActions: 4
+  difficulty: 0
   players:
   - {fileID: 1791219533}
   - {fileID: 1824976875}
@@ -1256,10 +1256,14 @@ MonoBehaviour:
   - {fileID: 1468568779}
   - {fileID: 478021616}
   - {fileID: 863564740}
-  wordRecognized: 0
+  wordRecognized: 
+  recognizedNewWord: 0
   timer: 0
   timerText: {fileID: 1812821350}
   menuScene: {fileID: 102900000, guid: d18d2dfbd1c0df94e8dead22c2f654ba, type: 3}
+  actionObjects:
+  - {fileID: 11400000, guid: 59fbf88e82046c44b8a37980939aed4b, type: 2}
+  - {fileID: 11400000, guid: 433f5cb931985e4439d34502c3a9e422, type: 2}
 --- !u!4 &1962924468
 Transform:
   m_ObjectHideFlags: 0
@@ -1284,10 +1288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e540f7ce6d2506944b4c63a47b9a06b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keywords:
-  - he brushes his hair
-  - she ties her shoes
-  - he spins the wheel
   confidence: 2
   speed: 1
   target: {fileID: 0}

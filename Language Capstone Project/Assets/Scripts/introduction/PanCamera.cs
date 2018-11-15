@@ -50,7 +50,7 @@ public class PanCamera : MonoBehaviour
     public GameObject textPanel;
     Text text;
 
-    public Vector3 spawnPointCamera;
+    Vector3 spawnPointCamera;
 
     public string[] adjectives;
 
@@ -60,6 +60,10 @@ public class PanCamera : MonoBehaviour
 
     void Start ()
     {
+        if(StaticVariables.minigame != null)
+            amtOfPlayers = StaticVariables.minigame.AmountOfPlayers;
+
+
         // get reference to camera
         cam = Camera.main;
 
@@ -89,7 +93,8 @@ public class PanCamera : MonoBehaviour
 
         var midpoint = (players[0].transform.position.x + players[players.Length - 1].transform.position.x) / 2f;
         spawnPointCamera.x = midpoint;
-        spawnPointCamera.z = -10f * (amtOfPlayers/2f);
+        spawnPointCamera.y = amtOfPlayers + 2f;
+        spawnPointCamera.z = -35f * (amtOfPlayers/2f);
 
         cam.transform.position = spawnPointCamera;
     }
