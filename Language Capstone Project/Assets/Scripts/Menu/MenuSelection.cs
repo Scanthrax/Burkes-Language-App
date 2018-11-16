@@ -8,7 +8,7 @@ public class MenuSelection : MonoBehaviour
     /// <summary>
     /// The names of the different menus we will be displaying throughout the app
     /// </summary>
-    public enum Menu { Welcome, GameSelect }
+    public enum Menu { Welcome, GameSelect, ChooseLanguage}
 
     /// <summary>
     /// Directions for the menu transitions
@@ -44,12 +44,14 @@ public class MenuSelection : MonoBehaviour
         // add the menus to the dictionary
         menuDictionary.Add(Menu.Welcome, Canvas.Find("Welcome").GetComponent<RectTransform>());
         menuDictionary.Add(Menu.GameSelect, Canvas.Find("Game Container").GetComponent<RectTransform>());
+        menuDictionary.Add(Menu.ChooseLanguage, Canvas.Find("Choose Language").GetComponent<RectTransform>());
 
         // set button interactions
         // Get menu                  // locate the button & get the component   // add the function to the button listener  // out menu             // in menu                      // direction of sweep
-        menuDictionary[Menu.Welcome].Find("Button").GetComponent<Button>().onClick.AddListener(delegate { GoToNextMenu(menuDictionary[Menu.Welcome], menuDictionary[Menu.GameSelect],Direction.Right); });
+        menuDictionary[Menu.Welcome].Find("Button").GetComponent<Button>().onClick.AddListener(delegate { GoToNextMenu(menuDictionary[Menu.Welcome], menuDictionary[Menu.ChooseLanguage],Direction.Right); });
         menuDictionary[Menu.GameSelect].Find("Button").GetComponent<Button>().onClick.AddListener(delegate { GoToNextMenu(menuDictionary[Menu.GameSelect], menuDictionary[Menu.Welcome],Direction.Left); });
-
+        menuDictionary[Menu.ChooseLanguage].Find("English").GetComponent<Button>().onClick.AddListener(delegate { GoToNextMenu(menuDictionary[Menu.ChooseLanguage], menuDictionary[Menu.GameSelect], Direction.Down); });
+        menuDictionary[Menu.ChooseLanguage].Find("Spanish").GetComponent<Button>().onClick.AddListener(delegate { GoToNextMenu(menuDictionary[Menu.ChooseLanguage], menuDictionary[Menu.GameSelect], Direction.Down); });
 
         // disable all menus
         foreach (KeyValuePair<Menu, RectTransform> entry in menuDictionary)

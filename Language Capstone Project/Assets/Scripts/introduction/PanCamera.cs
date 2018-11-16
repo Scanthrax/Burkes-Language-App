@@ -58,6 +58,7 @@ public class PanCamera : MonoBehaviour
 
     bool timerEnd = false;
 
+    bool canGoToNextScene = false;
     void Start ()
     {
         if(StaticVariables.minigame != null)
@@ -199,10 +200,25 @@ public class PanCamera : MonoBehaviour
             string s5 = string.Concat(new string[] {s1,s2,s3,s4});
 
             text.text = s5;
+
+            if (!canGoToNextScene)
+                canGoToNextScene = true;
         }
         else
         {
             textPanel.SetActive(false);
+
+            if (canGoToNextScene)
+            {
+                GoToMinigame();
+            }
         }
+    }
+
+
+    public void GoToMinigame()
+    {
+        SceneManager.LoadScene(StaticVariables.minigame.Scene.name);
+        StaticVariables.minigame.TimesPlayed++;
     }
 }

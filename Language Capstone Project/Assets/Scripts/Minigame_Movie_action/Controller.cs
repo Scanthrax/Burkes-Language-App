@@ -96,9 +96,12 @@ public class Controller : MonoBehaviour {
         {
             if (wordToObject.ContainsKey(wordRecognized))
             {
-                points[0] += 10;
+                
+                
+
+                points[0] += RandomPosition(wordRecognized) * 10;
+
                 text[0].text = points[0].ToString();
-                RandomPosition(wordRecognized);
             }
             recognizedNewWord = false;
         }
@@ -147,8 +150,11 @@ public class Controller : MonoBehaviour {
         actions[rand].transform.position = new Vector3(screen.transform.position.x + x, screen.transform.position.y + y, screen.transform.position.z - 0.01f);
     }
 
-    void RandomPosition(string key)
+    int RandomPosition(string key)
     {
+        int amount = wordToObject[key].Count;
+        print(amount);
+
         foreach (GameObject item in wordToObject[key].ToArray())
         {
             float x = Random.Range(-screen.transform.localScale.x * 5f, screen.transform.localScale.x * 5f);
@@ -166,8 +172,9 @@ public class Controller : MonoBehaviour {
             temp = item.GetComponent<movement>().actionObj.sentence;
 
             wordToObject[temp].Add(item);
-
         }
+
+        return amount;
     }
 
 

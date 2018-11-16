@@ -15,4 +15,4 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 7be234be1ffa83646b3828dc5e4806b6, type: 3}
   - {fileID: 21300002, guid: 7be234be1ffa83646b3828dc5e4806b6, type: 3}
-  frameRate: 5
+  frameRate: 3

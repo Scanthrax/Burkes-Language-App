@@ -26,6 +26,6 @@ public class GameInterfaceContainer : MonoBehaviour {
     {
         SceneManager.LoadScene(StaticVariables.introScene.name);
         StaticVariables.minigame = minigame;
-        minigame.TimesPlayed++;
+
     }
 }

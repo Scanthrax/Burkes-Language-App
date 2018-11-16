@@ -115,10 +115,6 @@ public class SpeechController : MonoBehaviour {
         var word = args.text;
 
 
-        // print the sentence thus far
-        results.text = formingSentence.Print();
-
-
 
         cont.recognizedNewWord = true;
         cont.wordRecognized = word;
