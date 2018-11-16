@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camOffset: {x: 0, y: 3, z: -10}
-  amtOfPlayers: 5
+  amtOfPlayers: 8
   playerPrefab: {fileID: 1870209755922528, guid: 8a032bde850953342847c935093c97cf,
     type: 2}
   spawnPoint: {fileID: 1719285633}
@@ -648,7 +648,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 261a5a8de94b85244839ad62594e1fdf, type: 2}
   - {fileID: 11400000, guid: 9c0618d5693cf2e4684583c24a18dbb4, type: 2}
   textPanel: {fileID: 331488669}
-  spawnPointCamera: {x: 0, y: 3, z: -40}
   adjectives:
   - adventurous
   - ambitious

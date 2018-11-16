@@ -56,7 +56,7 @@ public struct Sentence
 
 public class SpeechController : MonoBehaviour {
 
-    public string[] keywords;
+    string[] keywords;
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
 
     public float speed = 1;
@@ -76,8 +76,15 @@ public class SpeechController : MonoBehaviour {
 
     void Start ()
     {
-        if (keywords != null)
+        if(cont.actionObjects.Length > 0)
         {
+            keywords = new string[cont.actionObjects.Length];
+
+            for (int i = 0; i < keywords.Length; i++)
+            {
+                keywords[i] = cont.actionObjects[i].sentence;
+            }
+
             recognizer = new KeywordRecognizer(keywords, confidence);
             recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
             recognizer.Start();
@@ -107,18 +114,13 @@ public class SpeechController : MonoBehaviour {
         // translates the result into text
         var word = args.text;
 
-        // set the resulat in the correct position in the sentence
-        formingSentence.SetWord(wordPosition, word);
 
         // print the sentence thus far
         results.text = formingSentence.Print();
 
-        // set position back to 0
-        if(wordPosition++ > formingSentence.Length - 2)
-        {
-            wordPosition = 0;
-        }
 
-        cont.wordRecognized = true;
+
+        cont.recognizedNewWord = true;
+        cont.wordRecognized = word;
     }
 }

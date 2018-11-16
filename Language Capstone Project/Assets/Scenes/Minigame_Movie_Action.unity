@@ -2697,7 +2697,7 @@ GameObject:
   - component: {fileID: 1813219933}
   - component: {fileID: 1813219932}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3021,7 +3021,7 @@ MonoBehaviour:
   ground: {fileID: 735196574}
   screen: {fileID: 2134607615}
   action: {fileID: 1521244748692800, guid: 50a123af4119a2a42aa625a6ca48621c, type: 2}
-  numberOfActions: 8
+  numberOfActions: 5
   difficulty: 2
   players:
   - {fileID: 1791219533}
@@ -3159,7 +3159,7 @@ GameObject:
   - component: {fileID: 1980298264}
   - component: {fileID: 1980298263}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

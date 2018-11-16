@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigame_PossessiveAdjectives.unity
     guid: b5b29dfc724de2c4c827105a1302188f
+  - enabled: 1
+    path: Assets/Scenes/CharacterIntroTest.unity
+    guid: c40f70c29d88aae46a0155b8106da6ea
   m_configObjects: {}

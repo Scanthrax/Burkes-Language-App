@@ -91,7 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
   speed: 0
-  controller: {fileID: 0}
+  frames:
+  - {fileID: 21300002, guid: f6591c205e2c5ea4ebbcfd98a7d73c32, type: 3}
+  - {fileID: 21300004, guid: f6591c205e2c5ea4ebbcfd98a7d73c32, type: 3}
+  - {fileID: 21300006, guid: f6591c205e2c5ea4ebbcfd98a7d73c32, type: 3}
 --- !u!212 &212024399683092100
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -127,7 +130,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4ccd979b8923457458a52cc24b7d9c12, type: 3}
+  m_Sprite: {fileID: 21300002, guid: f6591c205e2c5ea4ebbcfd98a7d73c32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
