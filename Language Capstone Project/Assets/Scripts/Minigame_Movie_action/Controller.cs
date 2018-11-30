@@ -36,6 +36,8 @@ public class Controller : MonoBehaviour {
         ground.material.color = Color.gray;
         screen.material.color = Color.gray;
 
+        //LocalizationManager.instance.LoadLocalizedText("localizedText_sp.json");
+
         float speed;
         switch(difficulty)
         {
@@ -59,6 +61,7 @@ public class Controller : MonoBehaviour {
             float y = Random.Range(-screen.transform.localScale.z * 5f, screen.transform.localScale.z * 5f);
 
             var obj = Instantiate(action, new Vector3(screen.transform.position.x + x,screen.transform.position.y + y, screen.transform.position.z - 0.01f), Quaternion.identity).GetComponent<movement>();
+            obj.transform.SetParent(screen.transform);
             actions.Add(obj.gameObject);
             obj.speed = speed;
             obj.actionObj = actionObjects[Random.Range(0, actionObjects.Length)];
@@ -73,10 +76,10 @@ public class Controller : MonoBehaviour {
 
         }
 
-        foreach (var item in wordToObject[actionObjects[0].sentence])
-        {
-            print(item.GetComponent<movement>().actionObj.name);
-        }
+        //foreach (var item in wordToObject[actionObjects[0].sentence])
+        //{
+        //    print(item.GetComponent<movement>().actionObj.name);
+        //}
 
         timer = 60f;
 
