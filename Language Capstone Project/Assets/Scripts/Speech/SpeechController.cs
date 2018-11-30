@@ -76,13 +76,16 @@ public class SpeechController : MonoBehaviour {
 
     void Start ()
     {
-        if(cont.actionObjects.Length > 0)
+        //LocalizationManager.instance.LoadLocalizedText("localizedText_sp.json");
+
+        if (cont.actionObjects.Length > 0)
         {
             keywords = new string[cont.actionObjects.Length];
 
             for (int i = 0; i < keywords.Length; i++)
             {
-                keywords[i] = cont.actionObjects[i].sentence;
+                keywords[i] =  cont.actionObjects[i].sentence;
+                print(keywords[i]);
             }
 
             recognizer = new KeywordRecognizer(keywords, confidence);
