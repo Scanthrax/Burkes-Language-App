@@ -62,6 +62,7 @@ public class MenuSelection : MonoBehaviour
         menuDictionary.Add("game select", Canvas.Find("Game Container").GetComponent<RectTransform>());
         menuDictionary.Add("choose language", Canvas.Find("Choose Language").GetComponent<RectTransform>());
         menuDictionary.Add("choose difficulty", Canvas.Find("Difficulty Select").GetComponent<RectTransform>());
+        menuDictionary.Add("topic select", Canvas.Find("Choose Topics").GetComponent<RectTransform>());
 
         // set button interactions
         // Get menu                  // locate the button & get the component   // add the function to the button listener  // out menu             // in menu                      // direction of sweep

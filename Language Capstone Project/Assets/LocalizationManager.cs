@@ -19,7 +19,7 @@ public class LocalizationManager : MonoBehaviour {
         }
         else if(instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
 
         DontDestroyOnLoad(gameObject);
